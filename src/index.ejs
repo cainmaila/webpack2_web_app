@@ -1,15 +1,26 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="UTF-8">
-    <title><%= htmlWebpackPlugin.options.title %></title>
-  </head>
-  <div>
-  	<%= htmlWebpackPlugin.options.var %>
-  </div>
-  <div id="app">
-  	<h2>{{message}}</h2>
-  	<my-div></my-div>
-  </div>
-  <body></body>
+    <title>
+        <%= htmlWebpackPlugin.options.title %>
+    </title>
+</head>
+
+<body>
+    <div>
+        <%= htmlWebpackPlugin.options.var %>
+    </div>
+    <div id="app">
+        <h1>Rollup + Vue2 Web App 框架</h1>
+        <div id="app">
+            <router-view></router-view>
+            <div>
+                123
+            </div>
+        </div>
+    </div>
+</body>
+
 </html>

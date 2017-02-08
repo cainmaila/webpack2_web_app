@@ -13,19 +13,39 @@ module.exports = {
     },
     resolve: {
         alias: {
-            'vue$': 'vue/dist/vue.common.js'
+            'vue$': 'vue/dist/vue.common.js',
+            // 'myDiv_component': '/src/component/myDiv.vue',
+            // 'myPage_component': '/src/component/myPage.vue',
+            // 'myTypes_types': '/src/store/types.js',
         }
     },
     module: {
         rules: [{
             test: /\.vue$/,
-            loader: 'vue-loader'
+            loader: 'vue-loader',
+            options: {
+                loaders: {
+                    css: ExtractTextPlugin.extract({
+                        loader: "css-loader!less-loader",
+                        fallbackLoader: "vue-style-loader"
+                    }),
+                    js: [{
+                        loader: 'babel-loader',
+                        options: {
+                            presets: ['es2015', 'stage-3'],
+                            plugins: ['transform-runtime']
+                        }
+                    }]
+                },
+                postcss: [require('autoprefixer')({ browsers: ['last 2 versions'] })],
+            }
         }, {
             test: /\.js$/,
             exclude: /(node_modules|bower_components)/,
             loader: 'babel-loader',
             query: {
-                presets: ['es2015', 'stage-3']
+                presets: ['es2015', 'stage-3'],
+                plugins: ['transform-runtime']
             }
         }, {
             test: /\.less$/,
@@ -65,12 +85,13 @@ module.exports = {
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': '"production"',
         }),
-        new webpack.optimize.UglifyJsPlugin({
-            minimize: true,
-            compress: {
-                warnings: false,
-                drop_console: false,
-            }
-        }),
+        // new webpack.optimize.UglifyJsPlugin({
+        //     minimize: true,
+        //     compress: {
+        //         warnings: false,
+        //         drop_console: false,
+        //     }
+        // }),
+
     ]
 };

@@ -1,31 +1,32 @@
-import './style/main.less';
-// var vue = require('vue');
+import "babel-polyfill";
+import MyDiv from './component/myDiv.vue';
+import MyPage from './component/myPage.vue';
+import ModulesA from './store/modules/moduleA.js';
 import Vue from 'vue';
-import MyDiv from './component/myComponent.vue';
-console.log('hello !!');
-console.log(Vue);
+import VueRouter from 'vue-router';
+import Vuex from 'vuex';
 
-class AAA {
-    constructor(args) {
-        console.log(args);
+// Vue.component('my-div', MyDiv);
+Vue.use(VueRouter);
+const router = new VueRouter({
+    routes: [
+        { path: '/', component: MyDiv },
+        { path: '/page', component: MyPage },
+    ]
+});
+
+Vue.use(Vuex);
+const store = new Vuex.Store({
+    state: {
+        isLoading: false,
+    },
+    modules: {
+        modulesA: ModulesA,
     }
+});
 
-    // methods
-}
-
-new AAA(123);
-
-let ccc = { a: 1 };
-let bbb = {
-    b: 'b',
-    ...ccc
-}
-console.log(bbb);
-
-Vue.component('my-div', MyDiv);
 new Vue({
     el: '#app',
-    data: {
-        message: 'okkkk!!!',
-    }
-})
+    router,
+    store,
+});
