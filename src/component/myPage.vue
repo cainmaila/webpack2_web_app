@@ -13,7 +13,7 @@
 <template>
     <div id="myPage">
         <p>{{pageName}} || {{countStr}} || {{modulesA}}</p>
-        <p @click="clickMe">按我 + {{modulesA.myVal}}</p>
+        <p @click="clickMe">999按我 + {{modulesA.myVal}}</p>
         <input type="text" :value="modulesA.myVal" @input="onChange">
     </div>
 </template>

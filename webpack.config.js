@@ -3,20 +3,22 @@ var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var hotMiddlewareScript = 'webpack-hot-middleware/client?reload=true';
 module.exports = {
     entry: {
-        main: './src/main.js',
+        main: ['./src/main.js', hotMiddlewareScript]
     },
     output: {
-        filename: './js/[name].[chunkhash].js',
-        path: path.resolve(__dirname, 'dist')
+        filename: './js/[name].[hash].js',
+        path: path.resolve(__dirname, 'dist'),
+        publicPath: 'http://localhost/'
     },
     resolve: {
         alias: {
             'vue$': 'vue/dist/vue.common.js',
-            // 'myDiv_component': '/src/component/myDiv.vue',
-            // 'myPage_component': '/src/component/myPage.vue',
-            // 'myTypes_types': '/src/store/types.js',
+            'myDiv_component': path.resolve(__dirname, 'src', 'component', 'myDiv.vue'),
+            'myPage_component': path.resolve(__dirname, 'src', 'component', 'myPage.vue'),
+            'myTypes_types': path.resolve(__dirname, 'src', 'store', 'types.js'),
         }
     },
     module: {
@@ -26,8 +28,8 @@ module.exports = {
             options: {
                 loaders: {
                     css: ExtractTextPlugin.extract({
-                        loader: "css-loader!less-loader",
-                        fallbackLoader: "vue-style-loader"
+                        use: "css-loader!less-loader",
+                        fallback: "vue-style-loader"
                     }),
                     js: [{
                         loader: 'babel-loader',
@@ -69,7 +71,7 @@ module.exports = {
         }]
     },
     plugins: [
-        new CleanWebpackPlugin(['dist']),
+        // new CleanWebpackPlugin(['dist']),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
             minChunks: function(module) {
@@ -80,18 +82,27 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: 'web標題',
             var: 'v0.0.1',
-            template: './src/index.ejs',
+            template: './src/index.html',
         }),
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': '"production"',
-        }),
-        // new webpack.optimize.UglifyJsPlugin({
-        //     minimize: true,
-        //     compress: {
-        //         warnings: false,
-        //         drop_console: false,
-        //     }
-        // }),
+    // new webpack.DefinePlugin({
+    //     'process.env.NODE_ENV': '"production"',
+    // }),
 
-    ]
+    // new webpack.optimize.UglifyJsPlugin({
+    //     minimize: true,
+    //     compress: {
+    //         warnings: false,
+    //         drop_console: false,
+    //     },
+    // }),
+
+        new webpack.HotModuleReplacementPlugin(),
+    ],
+    devtool: 'cheap-module-eval-source-map',
+    // devServer: {
+    //     contentBase: path.join(__dirname, "dist"),
+    //     compress: true,
+    //     port: 80
+    // }
+
 };

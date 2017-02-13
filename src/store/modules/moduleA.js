@@ -1,4 +1,4 @@
-import { ADD, LOAD_DATA } from "../types.js";
+import { ADD, LOAD_DATA } from "myTypes_types";
 export default {
     state: {
         count: 0,

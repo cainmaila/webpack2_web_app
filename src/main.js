@@ -1,6 +1,6 @@
 import "babel-polyfill";
-import MyDiv from './component/myDiv.vue';
-import MyPage from './component/myPage.vue';
+import MyDiv from 'myDiv_component';
+// import MyPage from 'myPage_component';
 import ModulesA from './store/modules/moduleA.js';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
@@ -10,8 +10,10 @@ import Vuex from 'vuex';
 Vue.use(VueRouter);
 const router = new VueRouter({
     routes: [
-        { path: '/', component: MyDiv },
-        { path: '/page', component: MyPage },
+        { path: '/', component: MyDiv }, {
+            path: '/page',
+            component: resolve => require(['myPage_component'], resolve)
+        },
     ]
 });
 
