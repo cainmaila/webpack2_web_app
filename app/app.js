@@ -1,26 +1,13 @@
-const webpackDevMiddleware = require("webpack-dev-middleware");
-const WebpackHotMiddleware = require('webpack-hot-middleware')
-const webpack = require("webpack");
-const webpackConfig = require("../webpack.config");
 const path = require('path');
 const express = require('express');
 const app = express();
-const compiler = webpack(webpackConfig);
 const port = 80;
-// app.use(express.static(path.join(__dirname, '..', 'dist')));
-app.use(webpackDevMiddleware(compiler, {
-    publicPath: 'http://localhost/',
-    noInfo: true,
-    // lazy: false,
-    // watchOptions: {
-    //     aggregateTimeout: 300,
-    //     poll: true,
-    //     stats: {
-    //         colors: true
-    //     },
-    // },
-}));
-app.use(WebpackHotMiddleware(compiler));
+if (process.env.NODE_ENV === 'develop') {
+    const webpackDev = require('./webpackDev.js');
+    webpackDev(app);
+} else {
+    app.use(express.static(path.join(__dirname, '..', 'dist')));
+}
 app.use(logErrors);
 app.use(clientErrorHandler);
 app.use(errorHandler);
