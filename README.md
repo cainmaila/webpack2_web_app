@@ -4,6 +4,29 @@
 
 ## 入門
 
+這個Framework使用了以下技術架構
+
+#### JavaScript支援
+
+* es6 - stage 3 (babel)
+* vue - 資料驅動與view綁定
+* vue-router - SPA路由管理
+* vuex - 单向数据流状态管理模式
+* axios - ajax庫
+
+#### CSS
+
+* less - css前置處理氣
+* postcss - css後置處理器
+
+#### Html
+
+* vue-template - vue組件化
+
+#### 自動化build
+
+* webpack 2
+
 ## 安裝
 
 #### 環境需求
