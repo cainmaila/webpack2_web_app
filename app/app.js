@@ -8,6 +8,7 @@ if (process.env.NODE_ENV === 'develop') {
 } else {
     app.use(express.static(path.join(__dirname, '..', 'dist')));
 }
+app.use(express.static(path.join(__dirname, '..', 'resources')));
 app.use(logErrors);
 app.use(clientErrorHandler);
 app.use(errorHandler);
