@@ -375,6 +375,26 @@ yarn dev
 ```
 webpack會監視main.js入口相關檔案，程序變動時會自動編譯並反映在瀏覽器上
 
+## 專案架構
+
+```
+web app
+├───package.json -------- 插件管理文件
+├───webpack.config.js --- webpack2發佈設定
+├───config.json --------- 常數參數設定檔 
+├───app ----------------- web server目錄
+│   ├───app.js ---------- web server入口檔案
+│   └───webpackDev.js --- webpack2編譯階段掛件
+├───resources ----------- 靜態資源放置處
+├───dist ---------------- build完成的輸出檔案
+└───src ----------------- 原始代碼目錄
+    ├───component ------- vue組件目錄
+    ├───store ----------- vuex store目錄
+    │   ├───modules ----- vuex modules目錄
+    │   └───types.js ---- Event Type定義檔
+    └───style ----------- less樣式檔目錄
+```
+
 ## 編譯發佈
 
 發佈檔案請執行以下
