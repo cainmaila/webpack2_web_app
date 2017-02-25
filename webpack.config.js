@@ -31,8 +31,13 @@ if (process.env.NODE_ENV === 'production') {
             warnings: false,
             drop_console: false,
         },
-    }), new webpack.HotModuleReplacementPlugin());
+    }), new webpack.DefinePlugin({
+        'process.env': {
+            NODE_ENV: '"production"'
+        }
+    }));
 } else {
+    plugins.push(new webpack.HotModuleReplacementPlugin());
     entryMain.push(hotMiddlewareScript);
     output.publicPath = 'http://localhost/';
 }
