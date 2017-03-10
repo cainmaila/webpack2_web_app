@@ -9,6 +9,12 @@
         background-color: @color_2;
     }
 }
+
+#pcx {
+    width: 100%;
+    height: 200px;
+    background-image: url('./cat1.jpg');
+}
 </style>
 <template>
     <div id="myPage">

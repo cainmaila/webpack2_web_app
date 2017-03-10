@@ -1,3 +1,4 @@
+import 'style/global.less';
 import "babel-polyfill";
 import MyDiv from 'myDiv_component';
 // import MyPage from 'myPage_component';

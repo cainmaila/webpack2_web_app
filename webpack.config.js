@@ -49,6 +49,7 @@ var webpackConfig = {
     resolve: {
         alias: {
             'vue$': 'vue/dist/vue.common.js',
+            'style': path.resolve(__dirname, 'src', 'style'),
             'myDiv_component': path.resolve(__dirname, 'src', 'component', 'myDiv.vue'),
             'myPage_component': path.resolve(__dirname, 'src', 'component', 'myPage.vue'),
             'myTypes_types': path.resolve(__dirname, 'src', 'store', 'types.js'),
@@ -99,8 +100,23 @@ var webpackConfig = {
                     },
                 }, {
                     loader: 'less-loader',
-                }]
+                }, ]
             }),
+        }, {
+            test: /\.jpg?$|\.jpeg?$|\.gif?$|\.png?$/,
+            // loader: 'url-loader?limit=1000000!img-loader?progressive=true'
+            use: [{
+                loader: 'url-loader',
+                options: {
+                    limit: 1000,
+                    outputPath: 'images/'
+                }
+            }, {
+                loader: 'img-loader',
+                options: {
+                    progressive: true
+                }
+            }]
         }]
     },
     plugins: plugins,
