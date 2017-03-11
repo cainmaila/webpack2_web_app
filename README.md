@@ -407,3 +407,49 @@ yarn build
 
 [git位置](http://60.251.125.207:8888/Leedian-js-tools/webAppFramework)
 
+## eslint語法檢查設定
+
+sublime 3 使用esline語法檢查
+
+安裝全域掛件
+```bash
+npm i eslint eslint-plugin-vue -g 
+```
+
+安裝sublime 3 掛件
+**SublimeLinter**
+**SublimeLinter-contrib-eslint**
+
+新增eslint規則檔
+
+.eslintrc
+```json
+{
+    "plugins": ["vue"],
+    "parserOptions": {
+        "ecmaVersion": 8,
+        "sourceType": "module",
+        "ecmaFeatures":{
+            "experimentalObjectRestSpread":true
+        }
+    },
+    "rules": {
+        "indent": ["error", 4],
+        "no-console":"warn",
+        "eqeqeq":"warn",
+        "no-alert": "warn",
+        "no-eval":"error",
+        "no-undef-init":"error",
+        "no-unused-vars":"warn",
+        "no-var": "error",
+        "no-const-assign":"error",
+        "no-dupe-class-members": "error",
+        "no-extra-semi": "error",
+        "camelcase":"error",
+        "object-curly-newline":["warn", {
+            "ObjectPattern": {"multiline": true}
+        }]
+    }   
+}
+```
+重開sublime即可

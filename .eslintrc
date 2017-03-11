@@ -1,7 +1,11 @@
 {
+	"plugins": ["vue"],
 	"parserOptions": {
    		"ecmaVersion": 8,
    		"sourceType": "module",
+   		"ecmaFeatures":{
+   			"experimentalObjectRestSpread":true
+   		}
 	},
 	"rules": {
 		"indent": ["error", 4],
@@ -17,7 +21,6 @@
 		"no-extra-semi": "error",
 		"camelcase":"error",
 		"object-curly-newline":["warn", {
-			"ObjectExpression": "always",
 			"ObjectPattern": {"multiline": true}
 		}]
 	}	

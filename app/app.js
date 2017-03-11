@@ -19,10 +19,16 @@ app.use(status404);
 app.listen(port, () => {
     console.log('runing Web Server in ' + port + ' port...');
 });
-
-/**
- * 錯誤輸出
- */
+let ob = { aa: 123 };
+let cb = {
+    cc: 333,
+    ...ob
+}
+log(cb)
+    /**
+     
+     * 錯誤輸出
+     */
 function logErrors(err, req, res, next) {
     console.log('app : logErrors => ', err.stack);
     next(err);
