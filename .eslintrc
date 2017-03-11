@@ -5,18 +5,19 @@
 	},
 	"rules": {
 		"indent": ["error", 4],
-		"no-console":"error",
-		"eqeqeq":"error",
-		"no-alert": "error",
+		"no-console":"warn",
+		"eqeqeq":"warn",
+		"no-alert": "warn",
 		"no-eval":"error",
 		"no-undef-init":"error",
-		"no-unused-vars":"error",
+		"no-unused-vars":"warn",
 		"no-var": "error",
 		"no-const-assign":"error",
 		"no-dupe-class-members": "error",
 		"no-extra-semi": "error",
 		"camelcase":"error",
-		"object-curly-newline":["error", {
+		"object-curly-newline":["warn", {
+			"ObjectExpression": "always",
 			"ObjectPattern": {"multiline": true}
 		}]
 	}	
