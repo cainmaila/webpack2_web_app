@@ -102,22 +102,22 @@ var webpackConfig = {
                     loader: 'less-loader',
                 }, ]
             }),
-        }, {
-            test: /\.jpg?$|\.jpeg?$|\.gif?$|\.png?$/,
-            // loader: 'url-loader?limit=1000000!img-loader?progressive=true'
-            use: [{
-                loader: 'url-loader',
-                options: {
-                    limit: 1000,
-                    outputPath: 'images/'
-                }
-            }, {
-                loader: 'img-loader',
-                options: {
-                    progressive: true
-                }
-            }]
-        }]
+}, {
+    test: /\.jpg?$|\.jpeg?$|\.gif?$|\.png?$/,
+    use: [{
+        loader: 'url-loader',
+        options: {
+            limit: 1000,
+            outputPath: 'images/'
+        }
+    }, {
+        loader: 'img-loader',
+        options: {
+            progressive: true
+        }
+    }]
+}]
+
     },
     plugins: plugins,
 }

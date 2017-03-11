@@ -8,6 +8,7 @@ export default {
     getters: {
         countStr: (state) => {
             return '共有' + state.count + '個';
+
         },
     },
     mutations: {

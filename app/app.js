@@ -2,18 +2,21 @@ const path = require('path');
 const express = require('express');
 const app = express();
 const port = 80;
+
 if (process.env.NODE_ENV === 'develop') {
     const webpackDev = require('./webpackDev.js');
     webpackDev(app);
 } else {
     app.use(express.static(path.join(__dirname, '..', 'dist')));
 }
+
+
 app.use(express.static(path.join(__dirname, '..', 'resources')));
 app.use(logErrors);
 app.use(clientErrorHandler);
 app.use(errorHandler);
 app.use(status404);
-app.listen(port, function() {
+app.listen(port, () => {
     console.log('runing Web Server in ' + port + ' port...');
 });
 
@@ -51,6 +54,9 @@ function errorHandler(err, req, res, next) {
 /**
  * 404錯誤
  */
-function status404(req, res) {
-    res.status(404).send('404 error');
+function status404(req, res) { res.status(404).send('404 error'); }
+
+let a = {
+    b: 1,
 }
+log(a);

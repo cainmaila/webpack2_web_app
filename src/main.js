@@ -10,12 +10,13 @@ import Vuex from 'vuex';
 // Vue.component('my-div', MyDiv);
 Vue.use(VueRouter);
 const router = new VueRouter({
-    routes: [
-        { path: '/', component: MyDiv }, {
-            path: '/page',
-            component: resolve => require(['myPage_component'], resolve)
-        },
-    ]
+    routes: [{
+        path: '/',
+        component: MyDiv
+    }, {
+        path: '/page',
+        component: resolve => require(['myPage_component'], resolve)
+    }, ]
 });
 
 Vue.use(Vuex);

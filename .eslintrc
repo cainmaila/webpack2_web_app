@@ -1,0 +1,23 @@
+{
+	"parserOptions": {
+   		"ecmaVersion": 8,
+   		"sourceType": "module",
+	},
+	"rules": {
+		"indent": ["error", 4],
+		"no-console":"error",
+		"eqeqeq":"error",
+		"no-alert": "error",
+		"no-eval":"error",
+		"no-undef-init":"error",
+		"no-unused-vars":"error",
+		"no-var": "error",
+		"no-const-assign":"error",
+		"no-dupe-class-members": "error",
+		"no-extra-semi": "error",
+		"camelcase":"error",
+		"object-curly-newline":["error", {
+			"ObjectPattern": {"multiline": true}
+		}]
+	}	
+}
