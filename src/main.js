@@ -34,3 +34,5 @@ new Vue({
     router,
     store,
 });
+
+console.log('輸出' + WEB_SERVER);

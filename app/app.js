@@ -19,16 +19,10 @@ app.use(status404);
 app.listen(port, () => {
     console.log('runing Web Server in ' + port + ' port...');
 });
-let ob = { aa: 123 };
-let cb = {
-    cc: 333,
-    ...ob
-}
-log(cb)
-    /**
-     
-     * 錯誤輸出
-     */
+/**
+ 
+ * 錯誤輸出
+ */
 function logErrors(err, req, res, next) {
     console.log('app : logErrors => ', err.stack);
     next(err);
@@ -61,8 +55,3 @@ function errorHandler(err, req, res, next) {
  * 404錯誤
  */
 function status404(req, res) { res.status(404).send('404 error'); }
-
-let a = {
-    b: 1,
-}
-log(a);

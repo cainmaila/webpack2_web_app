@@ -22,7 +22,8 @@ var plugins = [
     new HtmlWebpackPlugin({
         title: 'web標題',
         template: './src/index.html',
-    })
+    }),
+    new webpack.DefinePlugin(require('./evn.js')),
 ]
 if (process.env.NODE_ENV === 'production') {
     plugins.push(new webpack.optimize.UglifyJsPlugin({
@@ -31,10 +32,6 @@ if (process.env.NODE_ENV === 'production') {
             warnings: false,
             drop_console: false,
         },
-    }), new webpack.DefinePlugin({
-        'process.env': {
-            NODE_ENV: '"production"'
-        }
     }));
 } else {
     plugins.push(new webpack.HotModuleReplacementPlugin());
@@ -102,21 +99,21 @@ var webpackConfig = {
                     loader: 'less-loader',
                 }, ]
             }),
-}, {
-    test: /\.jpg?$|\.jpeg?$|\.gif?$|\.png?$/,
-    use: [{
-        loader: 'url-loader',
-        options: {
-            limit: 1000,
-            outputPath: 'images/'
-        }
-    }, {
-        loader: 'img-loader',
-        options: {
-            progressive: true
-        }
-    }]
-}]
+        }, {
+            test: /\.jpg?$|\.jpeg?$|\.gif?$|\.png?$/,
+            use: [{
+                loader: 'url-loader',
+                options: {
+                    limit: 1000,
+                    outputPath: 'images/'
+                }
+            }, {
+                loader: 'img-loader',
+                options: {
+                    progressive: true
+                }
+            }]
+        }]
 
     },
     plugins: plugins,
