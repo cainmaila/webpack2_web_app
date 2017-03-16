@@ -381,6 +381,7 @@ webpack會監視main.js入口相關檔案，程序變動時會自動編譯並反
 web app
 ├───package.json -------- 插件管理文件
 ├───webpack.config.js --- webpack2發佈設定
+├───env.js -------------- 編譯替換變數
 ├───config.json --------- 常數參數設定檔 
 ├───app ----------------- web server目錄
 │   ├───app.js ---------- web server入口檔案
