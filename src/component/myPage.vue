@@ -24,14 +24,30 @@
     </div>
 </template>
 <script>
+/**
+ * @file
+ * MyPage Vue組件
+ */
+
 import Vuex from 'vuex';
 import {
     ADD,
     LOAD_DATA,
 } from "../store/types.js";
+
+/**
+ * @namespace MyPage
+ * @type {Object}
+ * myPage Vue組件
+ */
 export default {
     data: function() {
         return {
+            /**
+             * 參考名稱
+             * @memberof MyPage
+             * @type {String}
+             */
             pageName: 'My Page !!',
         }
     },
@@ -40,6 +56,11 @@ export default {
         ...Vuex.mapGetters(['countStr']),
     },
     methods: {
+        /**
+         * clickMe方法
+         * @memberof MyPage
+         * @fires myeve
+         */
         clickMe() {
             this[ADD]({
                 num: 2

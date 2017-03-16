@@ -3,7 +3,7 @@
         "allowUnknownTags": true
     },
     "source": {
-        "includePattern": ".+\\.js(doc)?$",
+        "includePattern": ".+\\.(vue|js)$",
         "excludePattern": "(^|\\/|\\\\)_"
     },
     "opts": {
@@ -11,7 +11,8 @@
         "destination": "doc"
     },
     "plugins": [
-        "plugins/markdown"
+        "plugins/markdown",
+        "node_modules/jsdoc-vue"
     ],
     "templates": {
         "cleverLinks": true,
