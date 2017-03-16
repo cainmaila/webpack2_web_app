@@ -23,7 +23,7 @@ var plugins = [
         title: 'web標題',
         template: './src/index.html',
     }),
-    new webpack.DefinePlugin(require('./evn.js')),
+    new webpack.DefinePlugin(require('./env.js')),
 ]
 if (process.env.NODE_ENV === 'production') {
     plugins.push(new webpack.optimize.UglifyJsPlugin({
