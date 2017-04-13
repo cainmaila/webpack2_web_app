@@ -3,7 +3,6 @@ var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var JsDocPlugin = require('jsdoc-webpack-plugin');
 var hotMiddlewareScript = 'webpack-hot-middleware/client?reload=true';
 console.info('process.env.NODE_ENV=', process.env.NODE_ENV);
 var entryMain = ['./src/main.js'];
@@ -33,8 +32,6 @@ if (process.env.NODE_ENV === 'production') {
             warnings: false,
             drop_console: false,
         },
-    }), new JsDocPlugin({
-        conf: './conf.json'
     }));
 } else {
     plugins.push(new webpack.HotModuleReplacementPlugin());
@@ -121,7 +118,9 @@ var webpackConfig = {
     },
     plugins: plugins,
 }
-if (process.env.NODE_ENV === 'production') {} else {
+if (process.env.NODE_ENV === 'production') {
+    webpackConfig.devtool = false
+} else {
     webpackConfig.devtool = 'cheap-module-eval-source-map';
 }
 module.exports = webpackConfig;
