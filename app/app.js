@@ -11,7 +11,8 @@ if (process.env.NODE_ENV === 'develop') {
 }
 
 
-app.use(express.static(path.join(__dirname, '..', 'resources')));
+app.use(express.static(path.join(__dirname, '..', 'resources')))
+app.use(express.static(path.join(__dirname, '..', 'language')))
 app.use(logErrors);
 app.use(clientErrorHandler);
 app.use(errorHandler);
