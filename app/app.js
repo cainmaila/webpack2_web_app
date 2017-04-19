@@ -1,7 +1,32 @@
-const path = require('path');
-const express = require('express');
+const path = require('path')
+const express = require('express')
+const logPlugin = require('./logPlugin.js')
 const app = express();
 const port = 80;
+
+/* =====log4js===== */
+logPlugin.init({
+    appenders: [{
+        type: 'console'
+    }, {
+        type: 'file',
+        filename: 'logs/log',
+        maxLogSize: 20480,
+        backups: 3,
+        category: 'log',
+    }, {
+        type: 'file',
+        filename: 'logs/dev',
+        maxLogSize: 20480,
+        backups: 3,
+        category: 'dev',
+    }],
+})
+logPlugin.setLogLv('debug', 'dev')
+const log = logPlugin.getLog()
+log('use logPlugin !!')
+
+/* =====log4js end===== */
 
 if (process.env.NODE_ENV === 'develop') {
     const webpackDev = require('./webpackDev.js');
