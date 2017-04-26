@@ -45,7 +45,7 @@ var webpackConfig = {
     output: output,
     resolve: {
         alias: {
-            'vue$': 'vue/dist/vue.common.js',
+            // 'vue$': 'vue/dist/vue.common.js',
             'style': path.resolve(__dirname, 'src', 'style'),
             'myDiv_component': path.resolve(__dirname, 'src', 'component', 'myDiv.vue'),
             'myPage_component': path.resolve(__dirname, 'src', 'component', 'myPage.vue'),

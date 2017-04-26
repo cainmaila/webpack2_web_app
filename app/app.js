@@ -1,5 +1,21 @@
 const path = require('path')
 const express = require('express')
+const fs = require('fs')
+const Vue = require('vue')
+const ssr = new Vue({
+    // template: '<div>你已经在这花了 {{ counter }} 秒。</div>',
+    // template: require('./template/ssr.html'),
+    template: fs.readFileSync('./app/template/ssr.html', 'utf8'),
+    data: {
+        counter: 100,
+        cain: 'cain !!!',
+    }
+    // render: function(h) {
+    //     return h('p', 'hello world')
+    // }
+})
+
+const renderer = require('vue-server-renderer').createRenderer()
 const logPlugin = require('./logPlugin.js')
 const app = express();
 const port = 80;
@@ -38,6 +54,17 @@ if (process.env.NODE_ENV === 'develop') {
 
 app.use(express.static(path.join(__dirname, '..', 'resources')))
 app.use(express.static(path.join(__dirname, '..', 'language')))
+app.use('/ssr/:id', (req, res) => {
+    console.log(renderer)
+    renderer.renderToString(ssr, function(error, html) {
+        if (error) throw error
+        console.log(html)
+            // res.send('<!DOCTYPE html>' + html)
+        res.send('<!DOCTYPE html>' + html)
+            // => <p server-rendered="true">hello world</p>
+    })
+})
+
 app.use(logErrors);
 app.use(clientErrorHandler);
 app.use(errorHandler);
